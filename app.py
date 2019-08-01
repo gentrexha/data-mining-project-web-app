@@ -2,34 +2,56 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import pandas as pd
 
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
+app = dash.Dash(
+    __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
+)
+server = app.server
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+# Globals
 
+# Load data
+# TODO(Fix this import)
+df = pd.read_csv("data/datarrethpartive.csv")
+
+# html layout
+# TODO(Find out what this is actually for)
+layout = dict(
+    autosize=True,
+    automargin=True,
+    margin=dict(l=30, r=30, b=20, t=40),
+    hovermode="closest",
+    plot_bgcolor="#F9F9F9",
+    paper_bgcolor="#F9F9F9",
+    legend=dict(font=dict(size=10), orientation="h"),
+    title="Satellite Overview",
+)
+
+# Create controls
+# TODO()
+
+# Create app Layout
 app.layout = html.Div(
     children=[
-        html.H1(children="Hello Dash"),
+        # Error Message
+        html.Div(id="error-message"),
+        # Top Banner
         html.Div(
-            children="""
-                Dash: A web application framework for Python.
-            """
+            className="study-browser-banner row",
+            children=[
+                html.H2(className="h2-title", children="Data Mining Project"),
+                html.Div(
+                    className="div-logo",
+                    children=html.Img(
+                        className="logo", src=app.get_asset_url("images/logo_version_3.png")
+                    ),
+                ),
+                html.H2(className="h2-title-mobile", children="Data Mining Project"),
+            ],
         ),
-        dcc.Graph(
-            id="example-graph",
-            figure={
-                "data": [
-                    {"x": [1, 2, 3], "y": [4, 1, 2], "type": "bar", "name": "SF"},
-                    {
-                        "x": [1, 2, 3],
-                        "y": [2, 4, 5],
-                        "type": "bar",
-                        "name": u"Montréal",
-                    },
-                ],
-                "layout": {"title": "Dash Data Visualization"},
-            },
-        ),
+        # Body of the App
+        html.Div(className="row app-body", children=[]),
     ]
 )
 
