@@ -11,7 +11,7 @@ python app.py
 
     ├── app.py
     ├── README.md          <- The top-level README for developers using this project.
-    ├── assets       	   <- An optional folder that contains CSS stylesheets, images, or custom JavaScript files.
+    ├── assets             <- An optional folder that contains CSS stylesheets, images, or custom JavaScript files.
     │   └── images	       <- Images from third party sources.
     │
     ├── data               <- Data from third party sources.
